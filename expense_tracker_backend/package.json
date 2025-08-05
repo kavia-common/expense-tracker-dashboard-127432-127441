@@ -1,29 +1,48 @@
 {
-    "name": "minimal-express-app",
+    "name": "expense-tracker-backend",
     "version": "1.0.0",
-    "description": "Minimal Express app with scalable structure",
+    "description": "Backend API for expense tracker application with magic link authentication",
     "main": "src/server.js",
     "scripts": {
         "start": "node src/server.js",
         "dev": "nodemon src/server.js",
         "test": "jest",
-        "lint": "eslint ."
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "generate-openapi": "node generate_openapi.js",
+        "init-db": "node scripts/init-db.js",
+        "verify-setup": "node scripts/verify-setup.js",
+        "start:dev": "bash scripts/start-dev.sh",
+        "start:prod": "bash scripts/start-prod.sh"
     },
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "cors": "2.8.5",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
+        "express-rate-limit": "^7.1.5",
+        "helmet": "^7.1.0",
+        "joi": "^17.11.0",
+        "jsonwebtoken": "^9.0.2",
+        "nodemailer": "^6.9.7",
+        "sqlite3": "^5.1.6",
         "swagger-jsdoc": "^6.2.8",
-        "swagger-ui-express": "^5.0.1"
+        "swagger-ui-express": "^5.0.1",
+        "uuid": "^9.0.1"
     },
     "devDependencies": {
         "eslint": "^9.24.0",
         "globals": "^16.0.0",
         "jest": "^29.7.0",
-        "nodemon": "^3.0.1"
+        "nodemon": "^3.0.1",
+        "supertest": "^6.3.4"
     },
     "nodemonConfig": {
-        "watch": ["src"],
+        "watch": [
+            "src"
+        ],
         "ignore": [
             "node_modules",
             "package.json",
